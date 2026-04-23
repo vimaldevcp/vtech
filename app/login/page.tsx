@@ -1,22 +1,22 @@
 "use client";
 import { useState } from "react";
 
-export default function AdminLogin() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const login = async () => {
     await fetch("/api/auth/login", {
       method: "POST",
-      body: JSON.stringify({ email, password, role: "admin" }),
+      body: JSON.stringify({ email, password, role: "user" }),
     });
 
-    window.location.href = "/admin/dashboard";
+    window.location.href = "/";
   };
 
   return (
     <div>
-      <h1>Admin Login</h1>
+      <h1>User Login</h1>
       <input onChange={(e) => setEmail(e.target.value)} />
       <input type="password" onChange={(e) => setPassword(e.target.value)} />
       <button onClick={login}>Login</button>
